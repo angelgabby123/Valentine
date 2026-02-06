@@ -124,17 +124,17 @@ button {
 
     <div class="buttons">
         <button id="yes" onclick="yesClicked()">Yes ❤️</button>
-        <button id="no" onmouseover="growYes()">No 💔</button>
+        <button id="no" onclick="growYes()">No 💔</button>
     </div>
 </div>
 
 <script>
-/* YES button grows bigger every time NO is hovered */
+/* YES button grows bigger every time NO is clicked */
 let yesScale = 1;
 
 function growYes() {
     const yesBtn = document.getElementById("yes");
-    yesScale += 0.25; // grows 25% each time
+    yesScale += 0.5; // grows 50% each time
     yesBtn.style.transform = `scale(${yesScale})`;
 }
 
