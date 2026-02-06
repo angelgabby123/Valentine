@@ -114,7 +114,6 @@ button {
 
 <body>
 
-<!-- 🎵 Background music (LOCAL FILE) -->
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -130,11 +129,12 @@ button {
 </div>
 
 <script>
-/* YES button scaling when NO is hovered */
+/* YES button grows bigger every time NO is hovered */
 let yesScale = 1;
+
 function growYes() {
     const yesBtn = document.getElementById("yes");
-    yesScale += 0.1; // increase size by 10% each time
+    yesScale += 0.25; // grows 25% each time
     yesBtn.style.transform = `scale(${yesScale})`;
 }
 
@@ -164,7 +164,6 @@ const media = [
 
 let index = 0;
 
-/* Show image or video */
 function showMedia() {
     const gallery = document.getElementById("gallery");
     if (!gallery) return;
@@ -189,7 +188,6 @@ function showMedia() {
     index = (index + 1) % media.length;
 }
 
-/* Start slideshow */
 function startSlideshow() {
     showMedia();
     setInterval(showMedia, 3000);
