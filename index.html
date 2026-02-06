@@ -57,11 +57,13 @@ button {
     cursor: pointer;
     flex: 1 1 120px;
     max-width: 150px;
+    transition: transform 0.2s ease;
 }
 
 #yes {
     background: #ff3366;
     color: white;
+    transform: scale(1);
 }
 
 #no {
@@ -123,28 +125,17 @@ button {
 
     <div class="buttons">
         <button id="yes" onclick="yesClicked()">Yes ❤️</button>
-        <button id="no" onmouseover="runAway()">No 💔</button>
+        <button id="no" onmouseover="growYes()">No 💔</button>
     </div>
 </div>
 
 <script>
-/* NO button runs away but stays inside screen */
-function runAway() {
-    const btn = document.getElementById("no");
-    const card = document.getElementById("card");
-    
-    const cardRect = card.getBoundingClientRect();
-    const btnRect = btn.getBoundingClientRect();
-
-    const maxX = cardRect.width - btnRect.width;
-    const maxY = cardRect.height - btnRect.height;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    btn.style.position = "absolute";
-    btn.style.left = `${x}px`;
-    btn.style.top = `${y}px`;
+/* YES button scaling when NO is hovered */
+let yesScale = 1;
+function growYes() {
+    const yesBtn = document.getElementById("yes");
+    yesScale += 0.1; // increase size by 10% each time
+    yesBtn.style.transform = `scale(${yesScale})`;
 }
 
 /* YES clicked */
@@ -156,7 +147,6 @@ function yesClicked() {
         <h1>BABYYYYYYYYY!!! 🥰❤️</h1>
         <p>You just made my heart so happy 💕</p>
         <p>Thank youuuuuuu</p>
-        <p>I love youuuuuuuu sooooooo muuuuuucccccchhhhhhhhhh</p>
         <div class="gallery" id="gallery"></div>
     `;
 
@@ -235,4 +225,3 @@ function startHearts() {
 
 </body>
 </html>
-
